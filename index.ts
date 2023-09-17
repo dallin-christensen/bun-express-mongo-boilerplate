@@ -2,10 +2,14 @@ import express from 'express'
 import connectDB from './config/db'
 import books from './routes/api/books'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
 connectDB();
 
 const app = express()
+
+app.use(cors({ origin: true, credentials: true }));
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
